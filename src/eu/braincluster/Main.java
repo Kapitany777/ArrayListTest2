@@ -3,7 +3,17 @@ package eu.braincluster;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main {
+public class Main
+{
+    private static void printPersons(List<Person> persons)
+    {
+        System.out.println("The elements of the list:");
+
+        for (Person person : persons)
+        {
+            System.out.println(person);
+        }
+    }
 
     private static void example1()
     {
@@ -22,12 +32,7 @@ public class Main {
 
         System.out.println("Number of elements: " + persons.size());
 
-        System.out.println("The elements of the list:");
-
-        for (Person person : persons)
-        {
-            System.out.println(person);
-        }
+        printPersons(persons);
 
         System.out.println("Deleting elements...");
         persons.clear();
@@ -45,12 +50,33 @@ public class Main {
 
         List<Person> persons2 = new ArrayList<>(persons1);
 
-        System.out.println("The elements of the second list:");
+        printPersons(persons2);
+    }
 
-        for (Person person : persons2)
-        {
-            System.out.println(person);
-        }
+    private static void example3()
+    {
+        System.out.println("ArrayList Example 3");
+
+        List<Person> persons = new ArrayList<>()
+        {{
+            add(new Person("John", "Smith"));
+            add(new Person("Alexander", "Rose"));
+        }};
+
+        printPersons(persons);
+    }
+
+    private static void example4()
+    {
+        System.out.println("ArrayList Example 3");
+
+        List<Person> persons =
+                List.of(
+                        new Person("Mathias", "Jacob"),
+                        new Person("Pat", "Garrett")
+                );
+
+        printPersons(persons);
     }
 
     public static void main(String[] args)
@@ -61,6 +87,12 @@ public class Main {
         System.out.println();
 
         example2();
+        System.out.println();
+
+        example3();
+        System.out.println();
+
+        example4();
         System.out.println();
     }
 }
